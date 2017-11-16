@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 import json
 import requests
+import os
 
 app = Flask(__name__)
 slack_url = os.environ['slack_url']
