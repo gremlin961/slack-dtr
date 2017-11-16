@@ -3,8 +3,7 @@ import json
 import requests
 
 app = Flask(__name__)
-webhook_url = 'https://hooks.slack.com/services/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'
-
+slack_url = os.environ['slack_url']
 
 @app.route('/push', methods=['POST'])
 def push():
@@ -18,7 +17,7 @@ def push():
         dtr_repo = json.dumps(dtr_data["contents"]["repository"])
         dtr_time = json.dumps(dtr_data["contents"]["pushedAt"])
         slack_data = {"text": "User " + dtr_user.strip('"') + " pushed tag " + dtr_image + " at " + dtr_time.strip('"') + ". View more info here: <https://dtr.richard.dtcntr.net/repositories/" + dtr_namespace.strip('"') + "/" + dtr_repo.strip('"') + "/tags>"}
-        response = requests.post(webhook_url, data=json.dumps(slack_data),headers={'Content-Type': 'application/json'})
+        response = requests.post(slack_url, data=json.dumps(slack_data),headers={'Content-Type': 'application/json'})
         return '', 200
     else:
         abort(400)
@@ -33,7 +32,7 @@ def scan():
         scan_critical = json.dumps(dtr_data["contents"]["scanSummary"]["critical"])
         dtr_time = json.dumps(dtr_data["contents"]["scanSummary"]["check_completed_at"])
         slack_data = {"text": "Image scan completed for " + dtr_image + " at " + dtr_time.strip('"') + " with "+ scan_critical + " critical warnings."}
-        response = requests.post(webhook_url, data=json.dumps(slack_data),headers={'Content-Type': 'application/json'})
+        response = requests.post(slack_url, data=json.dumps(slack_data),headers={'Content-Type': 'application/json'})
         return '', 200
     else:
         abort(400)
