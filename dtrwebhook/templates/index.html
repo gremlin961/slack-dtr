@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docker DTR Webhook Slack Integration Plugin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      .container {
+        max-width: 500px;
+        padding-top: 50px;
+      }
+      h2 {
+        text-align: center;
+      }
+      footer {
+        font-size: 15pt;
+        text-align: center;
+      }
+      p.padding {
+        padding-bottom: 1cm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Docker DTR and Slack Plugin</h2>
+        <center><img src="/static/docker-slack.png" width="290" height="100"></center>
+      <p class="padding"></p>
+      {% if slack_url == 'https://your.slack.url/token'%}
+          Please enter your Slack application URL below:
+          <p></p>
+      {% else %}
+          Your current Slack application URL is: {{ slack_url }}</br>
+          <p></p>
+          You can update your Slack application URL below:
+          <p></p>
+      {% endif %}
+      <form method="POST" action=".">
+         <input id="post_form_id" size=50 name="slack_url" value="{{ slack_url }}" />
+         <input type="submit">
+      </form>
+      <div style="position: absolute; bottom: 5px; max-width: 500px">
+        <footer >
+          <p> This service is not created by, affiliated with, or supported by Slack Technologies, Inc.</p>
+        </footer>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

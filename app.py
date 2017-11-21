@@ -56,8 +56,8 @@ def delete():
     else:
         abort(400)
 
-@app.route('/manpush', methods=['POST'])
-def manpush():
+@app.route('/addmanifest', methods=['POST'])
+def addmanifest():
     if request.method == 'POST':
         print("Data received: ")
         print(request.json)
@@ -81,8 +81,8 @@ def manpush():
     else:
         abort(400)
 
-@app.route('/mandelete', methods=['POST'])
-def mandelete():
+@app.route('/delmanifest', methods=['POST'])
+def delmanifest():
     if request.method == 'POST':
         print("Data received: ")
         print(request.json)
