@@ -9,8 +9,6 @@ delete = Blueprint('delete', __name__)
 @delete.route('', methods=['POST'])
 def index():
     if request.method == 'POST':
-        #print("Data received: ")
-        #print(request.json)
         dtr_data = request.json
         event_type = json.dumps(dtr_data["type"])
         event_createdAt = json.dumps(dtr_data["createdAt"])

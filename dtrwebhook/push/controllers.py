@@ -6,11 +6,9 @@ import config
 push = Blueprint('push', __name__)
 
 
-@push.route('', methods=['GET', 'POST'])
+@push.route('', methods=['POST'])
 def index():
     if request.method == 'POST':
-        #print("Data received: ")
-        #print(request.json)
         dtr_data = request.json
         event_type = json.dumps(dtr_data["type"])
         event_createdAt = json.dumps(dtr_data["createdAt"])
@@ -25,11 +23,9 @@ def index():
         contents_pushedAt = json.dumps(dtr_data["contents"]["pushedAt"])
         event_location = json.dumps(dtr_data["location"])
 
-        slack_data = {"text": "User " + contents_author.strip('"') + " pushed tag " + contents_imageName + " at " + contents_pushedAt.strip('"') + ". View more info here: <https://dtr.richard.dtcntr.net/repositories/" + contents_namespace.strip('"') + "/" + contents_repository.strip('"') + "/tags>"}
+        slack_data = {"text": "User " + contents_author.strip('"') + " pushed tag " + contents_imageName + " at " + contents_pushedAt.strip('"')}
         slack_url=config.refresh()
         response = requests.post(slack_url, data=json.dumps(slack_data),headers={'Content-Type': 'application/json'})
         return '', 200
-    if request.method == 'GET':
-        return "working"
-    #else:
-        #abort(400)
+    else:
+        abort(400)

@@ -10,8 +10,6 @@ searchdata = Query()
 if len(db) == 0:
   db.insert({'id':1, 'slackurl':tmpurl})
 
-#slackdbdata = db.search(searchdata.id == 1)
-#slack_url = json.dumps(slackdbdata[0]["slackurl"]).strip('"')
 
 def refresh():
     slackdbdata = db.search(searchdata.id == 1)

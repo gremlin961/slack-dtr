@@ -13,12 +13,8 @@ def index():
     if request.method == 'POST':
         urlupdate=request.form['slack_url']
         config.db.update({'slackurl':urlupdate}, where('id') == 1)
-        #slackdbdata = config.db.search(config.searchdata.id == 1)
-        #slack_url = json.dumps(slackdbdata[0]["slackurl"]).strip('"')
         slack_url=config.refresh()
         return render_template('index.html', date_time=datetime.datetime.now(), slack_url=slack_url)
     if request.method == 'GET':
-        #slackdbdata = config.db.search(config.searchdata.id == 1)
-        # = json.dumps(slackdbdata[0]["slackurl"]).strip('"')
         slack_url=config.refresh()
         return render_template('index.html', date_time=datetime.datetime.now(), slack_url=slack_url)
