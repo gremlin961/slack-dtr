@@ -1,3 +1,5 @@
+# Import Flask and all the API endpoints for the dtrwebhook application
+
 from flask import Flask
 from dtrwebhook.main.controllers import main
 from dtrwebhook.addmanifest.controllers import addmanifest
@@ -10,6 +12,7 @@ from dtrwebhook.scanfail.controllers import scanfail
 
 app = Flask(__name__)
 
+# Regiser all the api endpoints for the application and define the associated URL prefix 
 app.register_blueprint(main, url_prefix='/')
 app.register_blueprint(addmanifest, url_prefix='/addmanifest')
 app.register_blueprint(delete, url_prefix='/delete')
