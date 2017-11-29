@@ -1,7 +1,8 @@
 # Application controller used to configure the Slack Application URL for the DTR Webhook integration with Slack
 
 from flask import Flask, Blueprint, render_template, request
-from tinydb import TinyDB, Query, where
+#from tinydb import TinyDB, Query, where
+from tinydb import where
 import json
 #import datetime
 import config
