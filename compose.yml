@@ -7,9 +7,7 @@ services:
     networks:
       - ucp-hrm
     volumes:
-      - type: volume
-      - source: webhookdb
-      - target: /database
+      - "webhookdb:/database"
     deploy:
       labels:
         com.docker.ucp.mesh.http.lr0x-tb7n-4jwt: internal_port=80,external_route=http://<enter.your_url.here>
