@@ -5,7 +5,7 @@ Simple web service to accept incomming webhooks from Docker DTR and forward them
 
 You can add your Slack Applicaiton URL by opening your browser and accessing the web service (i.e. http://your.service.url)
 
-The following API endpoints have been configured for each of the supported DTR webhooks
+The following API endpoints have been configured for each of the supported DTR webhooks.
 
 Tag pushed to repository	---> /push
 
