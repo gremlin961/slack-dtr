@@ -1,5 +1,5 @@
 # slack-dtr
-DTR Slack Notification Service
+Docker DTR Slack Notification Service
 
 Simple web service to accept incomming webhooks from Docker DTR and forward them to a Slack channel. By default, the web service listens on port 80
 
