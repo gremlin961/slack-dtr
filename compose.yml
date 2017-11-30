@@ -1,0 +1,27 @@
+version: "3.2"
+services:
+  webhook:
+    image: gremlin961/slack-dtr:latest
+    ports:
+      - 80
+    networks:
+      - ucp-hrm
+    volumes:
+      - type: volume
+      - source: webhookdb
+      - target: /database
+    deploy:
+      labels:
+        com.docker.ucp.mesh.http.lr0x-tb7n-4jwt: internal_port=80,external_route=http://<enter.your_url.here>
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+networks:
+  ucp-hrm:
+    external: true
+volumes:
+  webhookdb:
